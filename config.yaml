@@ -1,0 +1,30 @@
+hostname: '0.0.0.0'
+port: 30027
+serverApi: 'https://api-poolon.noussol.fr'
+JWT_SECRET: 'POOLONSTREAMEEEEEEERpopoposjudddjiiir!!de98*ifjdsuhfvdijsn19788854zfezfççé--*hjnfffhf!==uuuu'
+JWT_SECRET_USER: 'POOLONSTREAMEEEEEEERUUUUUSSSSEEEERRpopoposjudddjiiir!!de98*ifjdsuhfvdijsn19788854zfezfççé--*hjnfffhf!==uuuu'
+logLevel: 'debug'
+videoPath: '/home/tono5465/api-poolon.noussol.fr/videos'
+thumbnailsPath: '/home/tono5465/api-poolon.noussol.fr/thumbnails'
+devicesLogsPath: '/home/tono5465/api-poolon.noussol.fr/devicesLogs'
+templateMail:
+  resetAdminPassword: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/resetAdminPassword.html'
+  mailCreateAdmin: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/createdAdmin.html'
+  deleteAdmin: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/deleteAdmin.html'
+  mailCreateUser: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/createUser.html'
+  deleteUser: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/deleteUser.html'
+  resetUserPassword: '/home/tono5465/api-poolon.noussol.fr/mailTemplates/resetUserPassword.html'
+
+mail:
+  server: 'noussol.fr'
+  port: '465'
+  users:
+    contact:
+      username: poolon
+      password: 'Poolon13600**'
+database:
+  host: localhost
+  port: 3306
+  user: tono5465_poolonstreamer
+  password: 'PoolonStreamer13600**'
+  database: tono5465_poolon_streamer
