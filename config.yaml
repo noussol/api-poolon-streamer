@@ -23,7 +23,7 @@ mail:
       username: poolon
       password: 'Poolon13600**'
 database:
-  host: api-poolon-v3-database.mysql.database.azure.com
+  host: api-poolon-v3-server.mysql.database.azure.com
   port: 3306
   user: 'eljzrhleav'
   password: 'FwUgTuKu$Bni4j9w'
