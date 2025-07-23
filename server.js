@@ -29,6 +29,9 @@ const loadConfig = (path) => {
 };
 
 const config = loadConfig(argv.config);
+if(process.env.PORT){
+  config.port = process.env.PORT;
+}
 global.sharedConfig = config;
 
 const logger = require('./services/logger.js');
