@@ -5,7 +5,7 @@
     "bin": "server.js",
     "main": "server.js",
     "scripts": {
-        "start": "server.js"
+        "start": "node server.js"
     },
     "dependencies": {
         "@faker-js/faker": "^9.9.0",
