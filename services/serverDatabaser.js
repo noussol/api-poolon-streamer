@@ -15,7 +15,13 @@ exports.setDb = async (databaseInfos) => {
     await connection.query(`ALTER DATABASE \`${database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;`);
   
     // connect to db
-    seqToReturn =  new Sequelize(database, user, password, { dialect: 'mysql', host: host, port: port, logging: false });
+    seqToReturn =  new Sequelize(database, user, password, { dialect: 'mysql', host: host, port: port, logging: false, 
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: true
+        }
+      }
+     });
   
   }else{
   
@@ -25,7 +31,13 @@ exports.setDb = async (databaseInfos) => {
     await connection.query(`ALTER DATABASE \`${database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;`);
   
     // connect to db
-    seqToReturn = new Sequelize(database, user, password, { dialect: 'mysql', dialectOptions: {socketPath}, host: host, port: port, logging: false });
+    seqToReturn = new Sequelize(database, user, password, { dialect: 'mysql', dialectOptions: {socketPath}, host: host, port: port, logging: false,
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: true
+        }
+      }
+    });
   }
 
   global.sequelize = seqToReturn
