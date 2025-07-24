@@ -3,7 +3,7 @@ const { createLogger, format, transports } = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const path = require('path');
 
-const logger = createLogger({
+const _logger = createLogger({
     level: global.sharedConfig.logLevel,
     format: format.combine(
         format.timestamp(),
@@ -22,8 +22,19 @@ const logger = createLogger({
     ]
 });
 
-logger.log = (...args) => {
-    logger.info(...args);
+_logger.log = (...args) => {
+    _logger.info(...args);
 };
+
+const logger = {
+    info: (...args) => _logger.info(args.join(' ')),
+    warn: (...args) => _logger.warn(args.join(' ')),
+    error: (...args) => _logger.error(args.join(' ')),
+    debug: (...args) => _logger.debug(args.join(' ')),
+    log: (...args) => _logger.log(args.join(' ')),
+    setLogLevel: (level) => {
+        _logger.level = level;
+    }
+}
 
 module.exports = logger;
