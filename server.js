@@ -93,8 +93,10 @@ initDataBase(global.sharedConfig.database).then(async ()=> {
   
 
   app.use('/users', userRoutes)
-  app.use('/catalogue', catalogueRoutes)
+  app.use('/catalogue', catalogueRoutes.router)
   app.use('/device', deviceRoutes)
+
+  await catalogueRoutes.fetchVideosAndCategoriesFs()
 
   server.listen(config.port, config.hostname, () => {
     logger.log(`Server running at http://${config.hostname}:${config.port}/`);

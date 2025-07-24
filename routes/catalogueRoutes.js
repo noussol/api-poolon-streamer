@@ -64,7 +64,7 @@ const fetchVideosAndCategoriesFs = async () => {
   }
 }
 
-fetchVideosAndCategoriesFs()
+// fetchVideosAndCategoriesFs()
 
 const getAllVideos = async (req, res) => {
   try {
@@ -435,4 +435,4 @@ router.post('/edit-video', editVideo)
 router.post('/delete-video', deleteVideo)
 
 
-module.exports = router;
+module.exports = {router, fetchVideosAndCategoriesFs};
