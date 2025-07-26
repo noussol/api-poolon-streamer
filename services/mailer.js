@@ -6,7 +6,8 @@ const axios = require('axios');
 const logger = require('./logger');
 
 const mailServer = global.sharedConfig.mail.server
-const fromNoReplay = `"PoolOn - Contact" <contact@${mailServer}>`
+const username = global.sharedConfig.mail.users.contact.username
+const fromNoReplay = `"PoolOn - Contact" <${username}>`
 const mailResetAdminPassword = global.sharedConfig.templateMail.resetAdminPassword
 const mailCreateAdmin = global.sharedConfig.templateMail.mailCreateAdmin
 const mailDeleteAdmin = global.sharedConfig.templateMail.deleteAdmin
@@ -22,7 +23,7 @@ const transporterNoreplay = nodemailer.createTransport({
   port: global.sharedConfig.mail.port,
   secure: true, // true for 465, false for other ports
   auth: {
-      user: `${global.sharedConfig.mail.users.contact.username}@${mailServer}`,
+      user: `${global.sharedConfig.mail.users.contact.username}`,
       pass: global.sharedConfig.mail.users.contact.password
   },
   tls: {

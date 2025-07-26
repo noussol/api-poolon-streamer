@@ -20,8 +20,8 @@ mail:
   port: '465'
   users:
     contact:
-      username: poolon
-      password: 'Poolon13600**'
+      username: noreply@pool-on.com
+      password: 'Doingwhatilike@2026'
 database:
   host: api-poolon-v3-server.mysql.database.azure.com
   port: 3306
