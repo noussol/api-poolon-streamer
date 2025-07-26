@@ -54,7 +54,7 @@ exports.sendNewPasswordAdmin = async (name, password, mail) => {
     try {
         const template = fs.readFileSync(mailResetAdminPassword, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name).replace(/{{new_password}}/g, password)
-        await this.sendNoReplay(mail, `[Poolon manager - new password for poolon manager backoffice`, `Hi ${name}, new password for your account has been set: ${password}`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon manager] - new password for poolon manager backoffice`, `Hi ${name}, new password for your account has been set: ${password}`, mailHtml)
     } catch (error) {
         logger.error(`Error while sending new password to admin ${name} (${mail}), error was: `, error);
         return;
@@ -65,7 +65,7 @@ exports.sendCreateAdminMail = async (name, password, mail) => {
     try {
         const template = fs.readFileSync(mailCreateAdmin, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name).replace(/{{password}}/g, password)
-        await this.sendNoReplay(mail, `[Poolon manager - admin account created`, `Hi ${name}, new password for your account as admin has been set: ${password}`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon manager] - admin account created`, `Hi ${name}, new password for your account as admin has been set: ${password}`, mailHtml)
     } catch (error) {
         logger.error(`Error while sending new password to admin ${name} (${mail}), error was: `, error);
         return;
@@ -76,7 +76,7 @@ exports.sendCreateUserMail = async (name, password, mail) => {
     try {
         const template = fs.readFileSync(mailCreateUser, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name).replace(/{{password}}/g, password)
-        await this.sendNoReplay(mail, `[Poolon streamer - account created`, `Hi ${name}, your account has been created with the following password : ${password}`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon streamer] - account created`, `Hi ${name}, your account has been created with the following password : ${password}`, mailHtml)
     } catch (error) {
         logger.error(`Error while sending new password to user ${name} (${mail}), error was: `, error);
         return;
@@ -87,7 +87,7 @@ exports.sendNewPasswordUserMail = async (name, password, mail) => {
     try {
         const template = fs.readFileSync(mailResetUserPassword, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name).replace(/{{password}}/g, password)
-        await this.sendNoReplay(mail, `[Poolon streamer - new password`, `Hi ${name}, your new password is : ${password}`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon streamer] - new password`, `Hi ${name}, your new password is : ${password}`, mailHtml)
     } catch (error) {
         logger.error(`Error while sending new password to user ${name} (${mail}), error was: `, error);
         return;
@@ -98,7 +98,7 @@ exports.sendDeleteUserMail = async (name, mail) => {
     try {
         const template = fs.readFileSync(mailDeleteUser, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name)
-        await this.sendNoReplay(mail, `[Poolon streamer - account Deleted`, `Hi ${name}, your account has been deleted`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon streamer] - account Deleted`, `Hi ${name}, your account has been deleted`, mailHtml)
     } catch (error) {
         logger.error(`Error while sendDeleteUserMail to user ${name} (${mail}), error was: `, error);
         return;
@@ -109,7 +109,7 @@ exports.sendDeletedAdminMail = async (name, mail) => {
     try {
         const template = fs.readFileSync(mailDeleteAdmin, 'utf8');
         const mailHtml = template.replace(/{{name}}/g, name)
-        await this.sendNoReplay(mail, `[Poolon manager - admin account deleted`, `Hi ${name}, Your admin account has been deleted.`, mailHtml)
+        await this.sendNoReplay(mail, `[Poolon manager] - admin account deleted`, `Hi ${name}, Your admin account has been deleted.`, mailHtml)
     } catch (error) {
         logger.error(`Error while sendDeletedAdminMail ${name} (${mail}), error was: `, error);
         return;
