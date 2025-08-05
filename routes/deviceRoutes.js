@@ -104,7 +104,7 @@ const getLastVersion = async (req, res) => {
 
 const createNewDevice = async (req, res) => {
   try {
-    const { name, active, hash, version, valid_until, mainUser, paiment_ref } = req.body;
+    const { name, pretty_name, active, hash, version, valid_until, mainUser, paiment_ref } = req.body;
     const id_version = version?.id ?? null;
     const main_user = mainUser?.id ?? null;
 
@@ -128,6 +128,7 @@ const createNewDevice = async (req, res) => {
 
     const newDevice = new Device({
       name,
+      pretty_name,
       active: active??false, // Default to true if not provided
       hash,
       id_version,
@@ -146,7 +147,7 @@ const createNewDevice = async (req, res) => {
 
 const updateDevice = async (req, res) => {
   try {
-    const { id, name, active, hash, valid_until, paiment_ref, validUntil, mainUser, users } = req.body;
+    const { id, name, pretty_name, active, hash, valid_until, paiment_ref, validUntil, mainUser, users } = req.body;
     const oldValidUntil = valid_until ? Math.floor((((new Date(valid_until)).getTime() - (new Date()).getTime()) / (24*60*60*1000)) +1 ) : null
 
     if (!id) {
@@ -161,6 +162,7 @@ const updateDevice = async (req, res) => {
     }
     existingDevice.active = active??false;
     existingDevice.name = name ?? null;
+    existingDevice.pretty_name = pretty_name ?? null;
     existingDevice.hash = hash ?? null;
     existingDevice.paiment_ref = paiment_ref ?? null;
     existingDevice.main_user = mainUser?.id ?? null;

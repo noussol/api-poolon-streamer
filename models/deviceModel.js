@@ -11,6 +11,10 @@ const DEVICE_ATTR = {
     allowNull: false,
     unique: true
   },
+  pretty_name: {
+    type: DataTypes.STRING(255),
+    allowNull: true,
+  },
   active: {
     type: DataTypes.BOOLEAN,
     defaultValue: true
