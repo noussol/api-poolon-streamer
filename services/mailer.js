@@ -26,9 +26,9 @@ const transporterNoreplay = nodemailer.createTransport({
       user: `${global.sharedConfig.mail.users.contact.username}`,
       pass: global.sharedConfig.mail.users.contact.password
   },
-  tls: {
-      ciphers: 'SSLv3'
-  }
+//   tls: {
+//       ciphers: 'SSLv3'
+//   }
 });
 
 exports.sendNoReplay = (mail, subject, text, html) => {
