@@ -1,6 +1,6 @@
 hostname: '0.0.0.0'
 port: 8080
-serverApi: 'https://api-poolon.noussol.fr'
+serverApi: 'https://api-poolon-v3.azurewebsites.net/'
 JWT_SECRET: 'POOLONSTREAMEEEEEEERpopoposjudddjiiir!!de98*ifjdsuhfvdijsn19788854zfezfççé--*hjnfffhf!==uuuu'
 JWT_SECRET_USER: 'POOLONSTREAMEEEEEEERUUUUUSSSSEEEERRpopoposjudddjiiir!!de98*ifjdsuhfvdijsn19788854zfezfççé--*hjnfffhf!==uuuu'
 logLevel: 'debug'
@@ -16,7 +16,7 @@ templateMail:
   resetUserPassword: '/home/site/wwwroot/mailTemplates/resetUserPassword.html'
 
 mail:
-  server: 'noussol.fr'
+  server: 'ssl0.ovh.net'
   port: '465'
   users:
     contact:
