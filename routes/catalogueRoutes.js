@@ -42,6 +42,8 @@ const fetchVideosAndCategoriesFs = async () => {
           const foundVideo = await Video.count({where: { src }})
           if( foundVideo <= 0) {
             const videoStat = await fs.stat(path.join(categoryPath, video.name));
+            const videoPathFull = path.join(videoPath, categoryName, video.name);
+            await genrateThumbnails(videoPathFull, video.name, path.join(thumbnailsPath, categoryName));
             await Video.create({ title: video.name, id_category: cat[0].id, src, img, description: '', size: humanFileSize(videoStat.size) })
           }
         }
