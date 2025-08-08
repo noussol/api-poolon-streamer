@@ -575,12 +575,37 @@ const resetAdminPassword = async (req, res, next) => {
     }
 };
 
+const resetUserPassword = async (req, res, next) => {
+    const { mail } = req.body;
+    try {
+        const randomPassword = uuidv4().slice(0, 8);
+        const admin = await Admin.findOne({ where: { mail } });
+        if (admin) {
+            return res.status(404).json({ error: 'Admins only reset theirs password from the monitoring app' });
+        }
+        
+        const user = await User.findOne({ where: { mail } });
+        if( !user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        const hashedPassword = await bcrypt.hash(randomPassword, 10);
+        user.password = hashedPassword;
+        await user.save();
+        await mailer.sendNewPasswordUserMail(user?.first_name ?? '', randomPassword, mail);
+        res.json({ message: 'Password reset successful' });
+    } catch (error) {
+        logger.error('error while resetUserPassword, was: ', error);
+        res.status(500).json({ error: 'Error resetting password' });
+    }
+};
+
 const router = express.Router();
 
 router.post('/login', loginUser)
 router.post('/login-admin', loginAdmin)
 router.get('/verify-admin', verifyAdmin)
 router.post('/reset-admin-password', resetAdminPassword)
+router.post('/reset-any-password', resetUserPassword)
 router.post('/change-admin-password', changeAdminPassword)
 
 router.post('/exists/user-email', doesMailExists);
